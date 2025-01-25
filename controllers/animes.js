@@ -33,15 +33,15 @@ const createAnime = async (req, res) => {
     //#swagger.tags = ['Animes']
     const anime = {
         title: req.body.title,
-        description: req.body.description,
+        description: req.body.description || '',
         startDate: req.body.startDate,
-        endDate: req.body.endDate,
-        status: req.body.status,
-        episodes: req.body.episodes,
-        genres: req.body.genres,
-        popularity: req.body.popularity,
-        source: req.body.source,
-        studio: req.body.studio,
+        endDate: req.body.endDate || null,
+        status: req.body.status || 'Ongoing',
+        episodes: req.body.episodes || 0,
+        genres: req.body.genres || [],
+        popularity: req.body.popularity || 0,
+        source: req.body.source || '',
+        studio: req.body.studio || '',
     };
 
     try {
