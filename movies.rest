@@ -1,0 +1,46 @@
+### Get all movies
+GET http://localhost:3001/movies
+
+###
+
+### Get a specific movie by ID
+GET http://localhost:3001/movies/64be1c97c7d1ab001c5f9b0a
+
+###
+
+### Create a new movie (Bad Boys)
+POST http://localhost:3001/movies
+Content-Type: application/json
+
+{
+    "title": "Bad Boys",
+    "description": "Two hip detectives protect a murder witness while investigating a case of stolen heroin.",
+    "releaseDate": "1995-04-07",
+    "genres": ["Action", "Comedy", "Crime"],
+    "popularity": 8.7,
+    "source": "Original Screenplay",
+    "studio": "Columbia Pictures"
+}
+
+###
+
+### Update an existing movie (Bad Boys)
+PUT http://localhost:3001/movies/64be1c97c7d1ab001c5f9b0a
+Content-Type: application/json
+
+{
+    "title": "Bad Boys (Updated)",
+    "description": "Two detectives protect a murder witness while investigating stolen heroin.",
+    "releaseDate": "1995-04-07",
+    "genres": ["Action", "Comedy", "Crime", "Thriller"],
+    "popularity": 9.0,
+    "source": "Original Screenplay",
+    "studio": "Columbia Pictures"
+}
+
+###
+
+### Delete a movie by ID
+DELETE http://localhost:3001/movies/64be1c97c7d1ab001c5f9b0a
+
+###
