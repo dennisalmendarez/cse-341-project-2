@@ -29,7 +29,7 @@ router.post(
         body('studio').isString().optional(),
     ],
     validateRequest,
-    createMovie
+    moviesController.createMovie
 );
 
 router.put(
@@ -44,7 +44,7 @@ router.put(
         body('studio').isString().optional(),
     ],
     validateRequest,
-    updateMovie
+    moviesController.updateMovie
 );
 
 router.delete('/:id', moviesController.deleteMovie);
