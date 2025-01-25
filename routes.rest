@@ -1,0 +1,45 @@
+### Get all animes
+GET http://localhost:3001/animes
+###
+
+### Get a specific anime by ID
+GET http://localhost:3001/animes/64be1c97c7d1ab001c5f9b0a
+###
+
+### Create a new anime
+POST http://localhost:3001/animes
+Content-Type: application/json
+
+{
+    "title": "One Piece",
+    "description": "A pirate's journey to find the One Piece.",
+    "startDate": "1999-10-20",
+    "status": "Ongoing",
+    "episodes": 1000,
+    "genres": ["Action", "Adventure", "Comedy"],
+    "popularity": 9.8,
+    "source": "Manga",
+    "studio": "Toei Animation"
+}
+###
+
+### Update an anime by ID
+PUT http://localhost:3001/animes/64be1c97c7d1ab001c5f9b0a
+Content-Type: application/json
+
+{
+    "title": "One Piece",
+    "description": "A pirate's thrilling adventures on the Grand Line.",
+    "startDate": "1999-10-20",
+    "status": "Ongoing",
+    "episodes": 1050,
+    "genres": ["Action", "Adventure", "Comedy"],
+    "popularity": 9.9,
+    "source": "Manga",
+    "studio": "Toei Animation"
+}
+###
+
+### Delete an anime by ID
+DELETE http://localhost:3001/animes/64be1c97c7d1ab001c5f9b0a
+###
