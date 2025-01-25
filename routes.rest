@@ -3,7 +3,7 @@ GET http://localhost:3001/animes
 ###
 
 ### Get a specific anime by ID
-GET http://localhost:3001/animes/64be1c97c7d1ab001c5f9b0a
+GET http://localhost:3001/animes/679447a2058fc158b61aa74b
 ###
 
 ### Create a new anime
@@ -41,5 +41,5 @@ Content-Type: application/json
 ###
 
 ### Delete an anime by ID
-DELETE http://localhost:3001/animes/64be1c97c7d1ab001c5f9b0a
+DELETE http://localhost:3001/animes/679456269cfa333a046c9c78
 ###

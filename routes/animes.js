@@ -22,8 +22,8 @@ router.post(
     [
         body('title').isString().notEmpty().withMessage('Title is required and must be a string'),
         body('description').isString().optional(),
-        body('startDate').isISO8601().optional().withMessage('Start date must be in ISO8601 format'),
-        body('endDate').isISO8601().optional().withMessage('End date must be in ISO8601 format'),
+        body('startDate').isString().optional(),
+        body('endDate').isString().optional(),
         body('status').isIn(['Ongoing', 'Completed', 'Hiatus']).withMessage('Invalid status value'),
         body('episodes').isInt({ min: 1 }).optional().withMessage('Episodes must be a positive integer'),
         body('genres').isArray().optional().withMessage('Genres must be an array'),
@@ -40,8 +40,8 @@ router.put(
     [
         body('title').isString().optional(),
         body('description').isString().optional(),
-        body('startDate').isISO8601().optional().withMessage('Start date must be in ISO8601 format'),
-        body('endDate').isISO8601().optional().withMessage('End date must be in ISO8601 format'),
+        body('startDate').isString().optional(),
+        body('endDate').isString().optional(),
         body('status').isIn(['Ongoing', 'Completed', 'Hiatus']).optional().withMessage('Invalid status value'),
         body('episodes').isInt({ min: 1 }).optional().withMessage('Episodes must be a positive integer'),
         body('genres').isArray().optional().withMessage('Genres must be an array'),
