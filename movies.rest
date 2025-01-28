@@ -4,7 +4,7 @@ GET http://localhost:3001/movies
 ###
 
 ### Get a specific movie by ID
-GET http://localhost:3001/movies/64be1c97c7d1ab001c5f9b0a
+GET http://localhost:3001/movies/679818f4af51eda63ff1f484
 
 ###
 
@@ -25,12 +25,12 @@ Content-Type: application/json
 ###
 
 ### Update an existing movie (Bad Boys)
-PUT http://localhost:3001/movies/64be1c97c7d1ab001c5f9b0a
+PUT http://localhost:3001/movies/6795935fbc3844b95c3b6766
 Content-Type: application/json
 
 {
-    "title": "Bad Boys (Updated)",
-    "description": "Two detectives protect a murder witness while investigating stolen heroin.",
+    "title": "Bad Boys",
+    "description": "Two hip detectives protect a witness to a murder while investigating a case of stolen heroin from the evidence storage room from their police precinct.",
     "releaseDate": "1995-04-07",
     "genres": ["Action", "Comedy", "Crime", "Thriller"],
     "popularity": 9.0,
@@ -41,6 +41,6 @@ Content-Type: application/json
 ###
 
 ### Delete a movie by ID
-DELETE http://localhost:3001/movies/64be1c97c7d1ab001c5f9b0a
+DELETE http://localhost:3001/movies/6795935fbc3844b95c3b6766
 
 ###

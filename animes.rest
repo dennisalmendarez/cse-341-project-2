@@ -24,7 +24,7 @@ Content-Type: application/json
 ###
 
 ### Update an anime by ID
-PUT http://localhost:3001/animes/64be1c97c7d1ab001c5f9b0a
+PUT http://localhost:3001/animes/67959289bc3844b95c3b6765
 Content-Type: application/json
 
 {
@@ -33,7 +33,7 @@ Content-Type: application/json
     "startDate": "1999-10-20",
     "status": "Ongoing",
     "episodes": 1050,
-    "genres": ["Action", "Adventure", "Comedy"],
+    "genres": ["Action", "Adventure", "Comedy", "Friendship"],
     "popularity": 9.9,
     "source": "Manga",
     "studio": "Toei Animation"
@@ -41,5 +41,5 @@ Content-Type: application/json
 ###
 
 ### Delete an anime by ID
-DELETE http://localhost:3001/animes/679456269cfa333a046c9c78
+DELETE http://localhost:3001/animes/67959289bc3844b95c3b6765
 ###

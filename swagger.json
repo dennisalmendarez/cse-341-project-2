@@ -1,8 +1,8 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "animes Api",
-    "description": "Animes Api",
+    "title": "movies and animes Api",
+    "description": "API for managing movies and animes.",
     "version": "1.0.0"
   },
   "host": "cse-341-project-2-2scm.onrender.com",
@@ -40,10 +40,51 @@
         }
       },
       "post": {
+        "tags": [
+          "Movies"
+        ],
         "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "example": "any"
+                },
+                "description": {
+                  "example": "any"
+                },
+                "releaseDate": {
+                  "example": "any"
+                },
+                "genres": {
+                  "example": "any"
+                },
+                "popularity": {
+                  "example": "any"
+                },
+                "source": {
+                  "example": "any"
+                },
+                "studio": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
+          "201": {
+            "description": "Created"
+          },
           "400": {
             "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -78,6 +119,9 @@
         }
       },
       "put": {
+        "tags": [
+          "Movies"
+        ],
         "description": "",
         "parameters": [
           {
@@ -85,11 +129,50 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "example": "any"
+                },
+                "description": {
+                  "example": "any"
+                },
+                "releaseDate": {
+                  "example": "any"
+                },
+                "genres": {
+                  "example": "any"
+                },
+                "popularity": {
+                  "example": "any"
+                },
+                "source": {
+                  "example": "any"
+                },
+                "studio": {
+                  "example": "any"
+                }
+              }
+            }
           }
         ],
         "responses": {
+          "200": {
+            "description": "OK"
+          },
           "400": {
             "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
