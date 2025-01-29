@@ -13,12 +13,14 @@ const validateRequest = (req, res, next) => {
     next();
 };
 
+const isAuthenticated = require('../middleware/authenticate');
+
 router.get('/', animesController.getAll);
 
 router.get('/:id', animesController.getSingle);
 
 router.post(
-    '/',
+    '/', isAuthenticated,
     [
         body('title').isString().notEmpty().withMessage('Title is required and must be a string'),
         body('description').isString().optional(),
@@ -36,7 +38,7 @@ router.post(
 );
 
 router.put(
-    '/:id',
+    '/:id', isAuthenticated,
     [
         body('title').isString().optional(),
         body('description').isString().optional(),
@@ -53,6 +55,6 @@ router.put(
     animesController.updateAnime
 );
 
-router.delete('/:id', animesController.deleteAnime);
+router.delete('/:id', isAuthenticated, animesController.deleteAnime);
 
 module.exports = router;
