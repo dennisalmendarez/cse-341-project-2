@@ -22,11 +22,11 @@ router.get('/', moviesController.getAll);
 router.get('/:id', moviesController.getSingle);
 
 router.post(
-    '/', validateMovie, isAuthenticated, validateRequest, moviesController.createMovie
+    '/', validateMovie.createMovie, isAuthenticated, validateRequest, moviesController.createMovie
 );
 
 router.put(
-    '/:id', validateMovie, isAuthenticated, validateRequest, moviesController.updateMovie
+    '/:id', validateMovie.createMovie, isAuthenticated, validateRequest, moviesController.updateMovie
 );
 
 router.delete('/:id', isAuthenticated, moviesController.deleteMovie);
