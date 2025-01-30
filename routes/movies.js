@@ -4,8 +4,6 @@ const router = express.Router();
 
 const moviesController = require('../controllers/movies');
 
-const { isAuthenticated } = require('../middleware/authenticate');
-
 const validateMovie = require('../middleware/validate-movies');
 
 // Middleware to handle validation errors
@@ -22,13 +20,13 @@ router.get('/', moviesController.getAll);
 router.get('/:id', moviesController.getSingle);
 
 router.post(
-    '/', validateMovie.createMovie, isAuthenticated, validateRequest, moviesController.createMovie
+    '/', validateMovie.createMovie, validateRequest, moviesController.createMovie
 );
 
 router.put(
-    '/:id', validateMovie.createMovie, isAuthenticated, validateRequest, moviesController.updateMovie
+    '/:id', validateMovie.createMovie, validateRequest, moviesController.updateMovie
 );
 
-router.delete('/:id', isAuthenticated, moviesController.deleteMovie);
+router.delete('/:id', moviesController.deleteMovie);
 
 module.exports = router;
