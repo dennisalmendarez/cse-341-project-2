@@ -3,6 +3,7 @@ const { body, validationResult } = require('express-validator');
 const router = express.Router();
 
 const animesController = require('../controllers/animes');
+const { isAuthenticated } = require('../middleware/authenticate');
 
 // Middleware to handle validation errors
 const validateRequest = (req, res, next) => {
@@ -30,9 +31,7 @@ router.post(
         body('popularity').isFloat({ min: 0 }).optional().withMessage('Popularity must be a non-negative number'),
         body('source').isString().optional(),
         body('studio').isString().optional(),
-    ],
-    validateRequest,
-    animesController.createAnime
+    ], isAuthenticated, validateRequest, animesController.createAnime
 );
 
 router.put(
@@ -48,11 +47,9 @@ router.put(
         body('popularity').isFloat({ min: 0 }).optional().withMessage('Popularity must be a non-negative number'),
         body('source').isString().optional(),
         body('studio').isString().optional(),
-    ],
-    validateRequest,
-    animesController.updateAnime
+    ], isAuthenticated, validateRequest, animesController.updateAnime
 );
 
-router.delete('/:id', animesController.deleteAnime);
+router.delete('/:id', isAuthenticated, animesController.deleteAnime);
 
 module.exports = router;

@@ -4,6 +4,8 @@ const router = express.Router();
 
 const moviesController = require('../controllers/movies');
 
+const { isAuthenticated } = require('../middleware/authenticate');
+
 // Middleware to handle validation errors
 const validateRequest = (req, res, next) => {
     const errors = validationResult(req);
@@ -27,9 +29,7 @@ router.post(
         body('popularity').isFloat({ min: 0 }).optional().withMessage('Popularity must be a non-negative number'),
         body('source').isString().optional(),
         body('studio').isString().optional(),
-    ],
-    validateRequest,
-    moviesController.createMovie
+    ], isAuthenticated, validateRequest, moviesController.createMovie
 );
 
 router.put(
@@ -42,9 +42,7 @@ router.put(
         body('popularity').isFloat({ min: 0 }).optional().withMessage('Popularity must be a non-negative number'),
         body('source').isString().optional(),
         body('studio').isString().optional(),
-    ],
-    validateRequest,
-    moviesController.updateMovie
+    ], isAuthenticated, validateRequest, moviesController.updateMovie
 );
 
 router.delete('/:id', moviesController.deleteMovie);
