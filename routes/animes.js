@@ -20,11 +20,11 @@ router.get('/', animesController.getAll);
 router.get('/:id', animesController.getSingle);
 
 router.post(
-    '/', validateAnime, isAuthenticated, validateRequest, animesController.createAnime
+    '/', validateAnime.createAnime, isAuthenticated, validateRequest, animesController.createAnime
 );
 
 router.put(
-    '/:id', validateAnime, isAuthenticated, validateRequest, animesController.updateAnime
+    '/:id', validateAnime.updateAnime, isAuthenticated, validateRequest, animesController.updateAnime
 );
 
 router.delete('/:id', isAuthenticated, animesController.deleteAnime);

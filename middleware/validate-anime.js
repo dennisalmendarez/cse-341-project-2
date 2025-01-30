@@ -1,6 +1,6 @@
 const { body } = require('express-validator');
 
-const animeValidationRules = {
+const validateAnime = {
     createAnime: [
         body('title').isString().notEmpty().withMessage('Title is required and must be a string'),
         body('description').isString().optional(),
@@ -30,4 +30,4 @@ const animeValidationRules = {
     ],
 };
 
-module.exports = animeValidationRules;
+module.exports = validateAnime;
