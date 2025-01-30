@@ -16,7 +16,8 @@ app.use(session({
     secret: "secret",
     resave: false,
     saveUninitialized: true,
-}))
+
+}));
 
 app.use(passport.initialize());
 
@@ -38,7 +39,7 @@ app.use('/' , require('./routes/index.js'));
 passport.use(new GithubStrategy({
     clientID: process.env.GITHUB_CLIENT_ID,
     clientSecret: process.env.GITHUB_CLIENT_SECRET,
-    callbackURL: "http://localhost:3000/auth/github/callback"
+    callbackURL: "http://localhost:3000/github/callback"
 },
 function(accessToken, refreshToken, profile, done) {
     return done(null, profile);
