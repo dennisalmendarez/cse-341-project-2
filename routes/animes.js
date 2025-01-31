@@ -2,8 +2,11 @@ const express = require('express');
 const { body, validationResult } = require('express-validator');
 const router = express.Router();
 
-const animesController = require('../controllers/animes');
-const validateAnime = require('../middleware/validate-anime');
+const moviesController = require('../controllers/movies');
+
+const { isAuthenticated } = require('../middleware/authenticate');
+
+const validateMovie = require('../middleware/validate-movies');
 
 // Middleware to handle validation errors
 const validateRequest = (req, res, next) => {
@@ -14,18 +17,18 @@ const validateRequest = (req, res, next) => {
     next();
 };
 
-router.get('/', animesController.getAll);
+router.get('/', moviesController.getAll);
 
-router.get('/:id', animesController.getSingle);
+router.get('/:id', moviesController.getSingle);
 
 router.post(
-    '/', validateAnime.createAnime, validateRequest, animesController.createAnime
+    '/', validateMovie.createMovie, isAuthenticated, validateRequest, moviesController.createMovie
 );
 
 router.put(
-    '/:id', validateAnime.updateAnime, validateRequest, animesController.updateAnime
+    '/:id', validateMovie.createMovie, isAuthenticated, validateRequest, moviesController.updateMovie
 );
 
-router.delete('/:id', animesController.deleteAnime);
+router.delete('/:id', isAuthenticated, moviesController.deleteMovie);
 
 module.exports = router;
