@@ -5,32 +5,12 @@
     "description": "API for managing movies and animes.",
     "version": "1.0.0"
   },
-  "host": "cse-341-project-2-2scm.onrender.com",
+  "host": "https://cse-341-project-2-j6y0.onrender.com",
   "basePath": "/",
   "schemes": [
     "https"
   ],
   "paths": {
-    "/login": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
-    "/logout": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
     "/api-docs": {
       "get": {
         "description": "",
@@ -225,7 +205,7 @@
     "/animes/": {
       "get": {
         "tags": [
-          "Movies"
+          "Animes"
         ],
         "description": "",
         "produces": [
@@ -242,7 +222,7 @@
       },
       "post": {
         "tags": [
-          "Movies"
+          "Animes"
         ],
         "description": "",
         "parameters": [
@@ -258,7 +238,16 @@
                 "description": {
                   "example": "any"
                 },
-                "releaseDate": {
+                "startDate": {
+                  "example": "any"
+                },
+                "endDate": {
+                  "example": "any"
+                },
+                "status": {
+                  "example": "any"
+                },
+                "episodes": {
                   "example": "any"
                 },
                 "genres": {
@@ -284,9 +273,6 @@
           "400": {
             "description": "Bad Request"
           },
-          "401": {
-            "description": "Unauthorized"
-          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -296,7 +282,7 @@
     "/animes/{id}": {
       "get": {
         "tags": [
-          "Movies"
+          "Animes"
         ],
         "description": "",
         "produces": [
@@ -324,7 +310,7 @@
       },
       "put": {
         "tags": [
-          "Movies"
+          "Animes"
         ],
         "description": "",
         "parameters": [
@@ -346,7 +332,16 @@
                 "description": {
                   "example": "any"
                 },
-                "releaseDate": {
+                "startDate": {
+                  "example": "any"
+                },
+                "endDate": {
+                  "example": "any"
+                },
+                "status": {
+                  "example": "any"
+                },
+                "episodes": {
                   "example": "any"
                 },
                 "genres": {
@@ -372,9 +367,6 @@
           "400": {
             "description": "Bad Request"
           },
-          "401": {
-            "description": "Unauthorized"
-          },
           "404": {
             "description": "Not Found"
           },
@@ -385,7 +377,7 @@
       },
       "delete": {
         "tags": [
-          "Movies"
+          "Animes"
         ],
         "description": "",
         "parameters": [
@@ -399,9 +391,6 @@
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "401": {
-            "description": "Unauthorized"
           },
           "404": {
             "description": "Not Found"
