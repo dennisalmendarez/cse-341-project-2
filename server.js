@@ -63,6 +63,11 @@ app.get('/github/callback', passport.authenticate('github',
         res.redirect('/');
     });
 
+app.get('/session-test', (req, res) => {
+    console.log("Session Data:", req.session); // Log session to the console
+    res.json(req.session);
+});
+
 mongodb.initDb((err) => {
     if(err) {
         console.log(err);
