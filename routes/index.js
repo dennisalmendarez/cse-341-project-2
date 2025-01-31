@@ -20,8 +20,4 @@ router.get('/logout', function(req, res, next) {
     });
 });
 
-app.get('/session-test', (req, res) => {
-    res.json(req.session);
-});
-
 module.exports = router;
