@@ -2,10 +2,13 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv').config();
 const mongodb = require('./data/database');
+const MongoStore = require('connect-mongo');
 const passport = require('passport');
 const session = require('express-session');
 const GithubStrategy = require('passport-github2').Strategy;
 const cors = require('cors');
+
+
 
 const port = process.env.PORT || 3000;
 const app = express();
@@ -13,10 +16,10 @@ const app = express();
 app.use(bodyParser.json());
 
 app.use(session({
-    secret: "secret",
+    secret: "your-secret-key",
     resave: false,
-    saveUninitialized: true,
-
+    saveUninitialized: false,
+    store: MongoStore.create({ mongoUrl: process.env.MONGODB_URL })
 }));
 
 app.use(passport.initialize());
