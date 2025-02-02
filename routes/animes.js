@@ -1,32 +1,14 @@
 const express = require('express');
-const { body, validationResult } = require('express-validator');
-const router = express.Router();
-
-const animesController = require('../controllers/animes');
 const { isAuthenticated } = require('../middleware/authenticate');
 const validateAnime = require('../middleware/validate-anime');
+const animeController = require('../controllers/animes');
 
-// Middleware to handle validation errors
-const validateRequest = (req, res, next) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() });
-    }
-    next();
-};
+const router = express.Router();
 
-router.get('/', animesController.getAll);
-
-router.get('/:id', animesController.getSingle);
-
-router.post(
-    '/', validateAnime.createAnime, isAuthenticated, validateRequest, animesController.createAnime
-);
-
-router.put(
-    '/:id', validateAnime.updateAnime, isAuthenticated, validateRequest, animesController.updateAnime
-);
-
-router.delete('/:id', isAuthenticated, animesController.deleteAnime);
+router.get('/', animeController.getAll);
+router.get('/:id', animeController.getSingle);
+router.post('/', isAuthenticated, validateAnime.createAnime, animeController.createAnime);
+router.put('/:id', isAuthenticated, validateAnime.updateAnime, animeController.updateAnime);
+router.delete('/:id', isAuthenticated, animeController.deleteAnime);
 
 module.exports = router;
