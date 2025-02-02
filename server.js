@@ -5,7 +5,7 @@ import mongodb from './data/database.js';
 import MongoStore from 'connect-mongo';
 import passport from 'passport';
 import session from 'express-session';
-import { Strategy as GithubStrategy } from 'passport-github';
+import { Strategy as GithubStrategy } from 'passport-github2';
 import cors from 'cors';
 
 dotenv.config();
