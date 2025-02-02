@@ -1,6 +1,6 @@
 function isAuthenticated(req, res, next) {
     console.log("Checking authentication status...");
-    if (req.isAuthenticated()) {
+    if (req.isAuthenticated && req.isAuthenticated()) {
         console.log("User is authenticated");
         return next();
     } else {
