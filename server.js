@@ -1,13 +1,14 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const dotenv = require('dotenv').config();
-const mongodb = require('./data/database');
-const MongoStore = require('connect-mongo');
-const passport = require('passport');
-const session = require('express-session');
-const GithubStrategy = require('passport-github2').Strategy;
-const cors = require('cors');
+import express from 'express';
+import bodyParser from 'body-parser';
+import dotenv from 'dotenv';
+import mongodb from './data/database';
+import MongoStore from 'connect-mongo';
+import passport from 'passport';
+import session from 'express-session';
+import { Strategy as GithubStrategy } from 'passport-github';
+import cors from 'cors';
 
+dotenv.config();
 
 
 const port = process.env.PORT || 3000;
@@ -26,7 +27,7 @@ app.use(passport.initialize());
 
 app.use(passport.session());
 
-app.use((req, res, next) => {
+app.use((_, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Z-Key');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
