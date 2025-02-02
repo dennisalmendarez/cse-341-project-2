@@ -6,6 +6,15 @@ const animesController = require('../controllers/animes');
 const { isAuthenticated } = require('../middleware/authenticate');
 const validateAnime = require('../middleware/validate-anime');
 
+// Middleware to handle validation errors
+const validateRequest = (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+    next();
+};
+
 router.get('/', animesController.getAll);
 
 router.get('/:id', animesController.getSingle);
