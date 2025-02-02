@@ -19,7 +19,13 @@ app.use(session({
     secret: "your-secret-key",
     resave: false,
     saveUninitialized: false,
-    store: MongoStore.create({ mongoUrl: process.env.MONGODB_URL })
+    store: MongoStore.create({ mongoUrl: process.env.MONGODB_URL }),
+    cookie: {
+        secure: false, // Set to true in production with HTTPS
+        httpOnly: true,
+        sameSite: 'lax',
+        maxAge: 1000 * 60 * 60 * 24 // 24 hours
+    }
 }));
 
 app.use(passport.initialize());
