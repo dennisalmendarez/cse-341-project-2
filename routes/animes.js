@@ -1,14 +1,23 @@
 const express = require('express');
-const { isAuthenticated } = require('../middleware/authenticate');
-const validateAnime = require('../middleware/validate-anime');
-const animeController = require('../controllers/animes');
-
+const { body, validationResult } = require('express-validator');
 const router = express.Router();
 
-router.get('/', animeController.getAll);
-router.get('/:id', animeController.getSingle);
-router.post('/', isAuthenticated, validateAnime.createAnime, animeController.createAnime);
-router.put('/:id', isAuthenticated, validateAnime.updateAnime, animeController.updateAnime);
-router.delete('/:id', isAuthenticated, animeController.deleteAnime);
+const animesController = require('../controllers/animes');
+const { isAuthenticated } = require('../middleware/authenticate');
+const validateAnime = require('../middleware/validate-anime');
+
+router.get('/', animesController.getAll);
+
+router.get('/:id', animesController.getSingle);
+
+router.post(
+    '/', validateAnime.createAnime, isAuthenticated, validateRequest, animesController.createAnime
+);
+
+router.put(
+    '/:id', validateAnime.updateAnime, isAuthenticated, validateRequest, animesController.updateAnime
+);
+
+router.delete('/:id', isAuthenticated, animesController.deleteAnime);
 
 module.exports = router;

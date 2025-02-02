@@ -1,8 +1,9 @@
+const router = require('express').Router();
 const swaggerUi = require('swagger-ui-express');
-const swaggerDocument = require('./docs/swagger.json');
-const express = require('express');
+const swaggerDocument = require('../swagger.json');
+const { isAuthenticated } = require('../middleware/authenticate');
 
-const router = express.Router();
-router.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+router.use('/api-docs', isAuthenticated, swaggerUi.serve);
+router.get('/api-docs', isAuthenticated, swaggerUi.setup(swaggerDocument));
 
 module.exports = router;
