@@ -33,7 +33,8 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use(cors({ origin: '*', credentials: true, methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'] }));
+app.use(cors({methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']}));
+app.use(cors({origin: '*'}));
 app.use('/' , require('./routes'));
 
 passport.use(new GithubStrategy({
@@ -61,11 +62,6 @@ app.get('/github/callback', passport.authenticate('github',
         req.session.user = req.user;
         res.redirect('/');
     });
-
-app.get('/session-test', (req, res) => {
-    console.log("Session Data:", req.session); // Log session to the console
-    res.json(req.session);
-});
 
 mongodb.initDb((err) => {
     if(err) {
