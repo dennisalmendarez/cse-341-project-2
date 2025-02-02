@@ -1,7 +1,12 @@
-const isAuthenticated = (req, res, next) => {
-    if (req.session.user === undefined) {
-        return res.status(401).json({ message: 'You do not have access.' });
+function isAuthenticated(req, res, next) {
+    console.log("Checking authentication status...");
+    if (req.isAuthenticated()) {
+        console.log("User is authenticated");
+        return next();
+    } else {
+        console.log("User is not authenticated");
+        res.status(403).send('You have no access');
     }
-    next();
-};
-module.exports = { isAuthenticated};
+}
+
+module.exports = { isAuthenticated };
