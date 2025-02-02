@@ -33,8 +33,7 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use(cors({methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']}));
-app.use(cors({origin: '*'}));
+app.use(cors({ origin: 'http://localhost:3000', credentials: true, methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'] }));
 app.use('/' , require('./routes'));
 
 passport.use(new GithubStrategy({
