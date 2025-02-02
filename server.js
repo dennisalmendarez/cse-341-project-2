@@ -21,10 +21,9 @@ app.use(session({
     saveUninitialized: false,
     store: MongoStore.create({ mongoUrl: process.env.MONGODB_URL }),
     cookie: {
-        secure: false, // Set to true in production with HTTPS
-        httpOnly: true,
-        sameSite: 'lax',
-        maxAge: 1000 * 60 * 60 * 24 // 24 hours
+        secure: true, // Set to true if using HTTPS
+        httpOnly: false, // Allow Swagger to access cookies
+        sameSite: 'lax' // Adjust if needed
     }
 }));
 
@@ -40,9 +39,9 @@ app.use((req, res, next) => {
 });
 
 app.use(cors({methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']}));
-app.use(cors({origin: 'http://localhost:3000',
-    credentials: true
-}));
+app.use(cors({origin: 'localhost:3000'}));
+app.use(cors({credentials: true}));
+
 app.use('/' , require('./routes'));
 
 passport.use(new GithubStrategy({
@@ -65,9 +64,10 @@ passport.deserializeUser((user, done) => {
 app.get('/', (req, res) => {res.send(req.session.user !== undefined ? `Logged in as ${req.session.user.displayName}` : 'Logged out')});
 
 app.get('/github/callback', passport.authenticate('github',
-    { failureRedirect: '/api-docs', session: false }),
+    { failureRedirect: '/api-docs', session: true }),
     (req, res) => {
         req.session.user = req.user;
+        req.session.save();
         res.redirect('/');
     });
 
