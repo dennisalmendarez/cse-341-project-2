@@ -16,17 +16,9 @@ const validateRequest = (req, res, next) => {
 };
 
 router.get('/', animesController.getAll);
-
 router.get('/:id', animesController.getSingle);
-
-router.post(
-    '/', validateAnime.createAnime, isAuthenticated, validateRequest, animesController.createAnime
-);
-
-router.put(
-    '/:id', validateAnime.updateAnime, isAuthenticated, validateRequest, animesController.updateAnime
-);
-
+router.post('/', validateAnime.createAnime, isAuthenticated, validateRequest, animesController.createAnime);
+router.put('/:id', validateAnime.updateAnime, isAuthenticated, validateRequest, animesController.updateAnime);
 router.delete('/:id', isAuthenticated, animesController.deleteAnime);
 
 module.exports = router;
