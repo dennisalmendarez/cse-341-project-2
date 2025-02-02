@@ -5,7 +5,7 @@ function isAuthenticated(req, res, next) {
         return next();
     } else {
         console.log("User is not authenticated");
-        res.status(403).send('You have no access');
+        res.status(401).send('You have no access');
     }
 }
 
