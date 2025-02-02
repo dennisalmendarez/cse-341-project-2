@@ -21,7 +21,7 @@ app.use(session({
     saveUninitialized: false,
     store: MongoStore.create({ mongoUrl: process.env.MONGODB_URL }),
     cookie: {
-        secure: true, // Set to true if using HTTPS
+        secure: false, // Set to true if using HTTPS
         httpOnly: false, // Allow Swagger to access cookies
         sameSite: 'lax' // Adjust if needed
     }
