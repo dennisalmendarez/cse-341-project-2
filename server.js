@@ -19,7 +19,8 @@ app.use(session({
     secret: "your-secret-key",
     resave: false,
     saveUninitialized: false,
-    store: MongoStore.create({ mongoUrl: process.env.MONGODB_URL })
+    store: MongoStore.create({ mongoUrl: process.env.MONGODB_URL }),
+    cookie: { secure: false, httpOnly: false }  // Allow cookies for Swagger
 }));
 
 app.use(passport.initialize());
