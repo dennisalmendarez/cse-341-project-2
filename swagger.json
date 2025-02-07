@@ -1,14 +1,27 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "movies and animes Api",
-    "description": "API for managing movies and animes.",
+    "title": "Movies and Animes API",
+    "description": "API for managing movies and animes with authentication.",
     "version": "1.0.0"
   },
   "host": "cse-341-project-2-j6y0.onrender.com",
   "basePath": "/",
   "schemes": [
-    "https"
+    "http"
+  ],
+  "securityDefinitions": {
+    "SessionAuth": {
+      "type": "apiKey",
+      "name": "Cookie",
+      "in": "header"
+    }
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
   ],
   "paths": {
     "/login": {
@@ -439,5 +452,10 @@
         }
       }
     }
-  }
+  },
+  "security": [
+    {
+      "SessionAuth": []
+    }
+  ]
 }
