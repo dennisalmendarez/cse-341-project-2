@@ -5,8 +5,8 @@ const doc = {
         title: "Movies and Animes API",
         description: "API for managing movies and animes with authentication.",
     },
-    host: "localhost:3000",  // Change if testing on Render
-    schemes: ['http'],  // Change to 'https' if deployed
+    host: "cse-341-project-2-j6y0.onrender.com",  // Change if testing on Render
+    schemes: ['https'],  // Change to 'https' if deployed
     consumes: ["application/json"],
     produces: ["application/json"],
     securityDefinitions: {

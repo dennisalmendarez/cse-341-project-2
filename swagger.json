@@ -8,7 +8,7 @@
   "host": "cse-341-project-2-j6y0.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "securityDefinitions": {
     "SessionAuth": {
