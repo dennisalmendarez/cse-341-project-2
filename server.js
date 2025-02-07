@@ -35,7 +35,7 @@ app.use((req, res, next) => {
 });
 
 app.use(cors({methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']}));
-app.use(cors({origin: ['http://localhost:3000', 'https://cse-341-project-2-j6y0.onrender.com'], credentials: true}));
+app.use(cors({origin: ['https://cse-341-project-2-j6y0.onrender.com'], credentials: true}));
 app.use('/' , require('./routes'));
 
 passport.use(new GithubStrategy({
